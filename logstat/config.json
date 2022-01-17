@@ -1,0 +1,9 @@
+{
+    "logfile": "NASA_access_log_Aug95",
+    "top_req_pages": 2,
+    "perc_succ_reqs": true,
+    "perc_fail_reqs": true,
+    "top_hosts": 2,
+    "top_pages_per_host": 5,
+    "error_in_lines": true
+}
