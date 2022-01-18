@@ -5,7 +5,11 @@ import argparse
 
 
 class Config:
-    """captures run configuration"""
+    """
+    Captures run configuration.
+    Keep this as a class constructed directly from a dictionary (json),
+    so that we can convert the whole thing to web service easily.
+    """
 
     def __init__(self, cfgdict):
         self.logfile = cfgdict["logfile"]
