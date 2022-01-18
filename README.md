@@ -17,7 +17,7 @@ Command line options may alter the produced results with regards to the number o
 the top hosts - pages breakdown and the reporting of errors.
 
 # Prerequisites
-You need [python > 3.8](https://www.python.org/downloads/) [virtualenv](https://pypi.org/project/virtualenv/) installed in your system.
+You need [python >= 3.6](https://www.python.org/downloads/) and [virtualenv](https://pypi.org/project/virtualenv/) installed in your system.
 
 # Installation
 Create a python virtual environment 
