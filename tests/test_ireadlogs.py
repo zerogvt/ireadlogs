@@ -1,5 +1,5 @@
 import unittest
-from ireadlogs.ireadlogs import Config, LogLine
+from src.ireadlogs.ireadlogs import Config, LogLine
 
 
 class TestLogStats(unittest.TestCase):
@@ -11,7 +11,7 @@ class TestLogStats(unittest.TestCase):
             "perc_fail_reqs": True,
             "top_hosts": 2,
             "top_pages_per_host": 5,
-            "error_in_lines": True,
+            "show_errors": True,
         }
         UAT = Config(cfgdict=cfg)
         self.assertEqual(UAT.logfile, cfg["logfile"])
@@ -20,7 +20,7 @@ class TestLogStats(unittest.TestCase):
         self.assertEqual(UAT.perc_fail_reqs, cfg["perc_fail_reqs"])
         self.assertEqual(UAT.top_hosts, cfg["top_hosts"])
         self.assertEqual(UAT.top_pages_per_host, cfg["top_pages_per_host"])
-        self.assertEqual(UAT.error_in_lines, cfg["error_in_lines"])
+        self.assertEqual(UAT.show_errors, cfg["show_errors"])
 
     def test_logline(self):
         legit_line = (

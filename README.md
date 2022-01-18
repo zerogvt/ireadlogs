@@ -50,3 +50,9 @@ optional arguments:
                         limits the top pages per host breakdown (default is 5)
   --show-errors         if present show malformed line numbers
 ```
+
+# Build / Distribute
+`make distribute`
+
+# Run tests
+`make test`
