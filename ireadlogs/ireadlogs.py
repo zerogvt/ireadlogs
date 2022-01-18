@@ -1,7 +1,7 @@
-from distutils.log import Log
 import sys
 import re
 import json
+import argparse
 
 
 class Config:
@@ -14,7 +14,7 @@ class Config:
         self.perc_fail_reqs = cfgdict["perc_fail_reqs"]
         self.top_hosts = cfgdict["top_hosts"]
         self.top_pages_per_host = cfgdict["top_pages_per_host"]
-        self.error_in_lines = cfgdict["error_in_lines"]
+        self.show_errors = cfgdict["show_errors"]
 
 
 class LogLine:
@@ -25,6 +25,11 @@ class LogLine:
 
     # ctor
     def __init__(self, line):
+        """
+        constructor parses a string line into a LogLine object.
+        Code follows https://docs.python.org/3.5/glossary.html#term-eafp design
+        philosophy.
+        """
         try:
             # match line against reg exp
             m = self.MATCHER.match(line)
@@ -117,7 +122,6 @@ class Stats:
             "perc_succ_reqs": 0,
             "perc_fail_reqs": 0,
             "top_hosts": [],
-            "error_in_lines": None,
         }
 
         # extract stats for pages
@@ -152,7 +156,8 @@ class Stats:
             for p in pages_freq_for_host[: self.config.top_pages_per_host]:
                 res["top_hosts"][-1]["breakdown"].append((p, self.hosts[h]["pages"][p]))
         # errors
-        res["error_in_lines"] = self.errors
+        if self.config.show_errors:
+            res["error_in_lines"] = self.errors
         # all stats return as a dictionary
         return res
 
@@ -162,12 +167,50 @@ class Stats:
 
 
 def main():
-    # read in config for this run
-    with open("config.json") as json_file:
-        config = Config(cfgdict=json.load(json_file))
-        stats = Stats(config=config)
-        res = stats.stats()
-        print(json.dumps(res, indent=4))
+    parser = argparse.ArgumentParser()
+    parser.add_argument("logfile")
+    parser.add_argument(
+        "--pages",
+        default=10,
+        type=int,
+        help="limits the top pages shown (default is 10)",
+    )
+    parser.add_argument(
+        "--hosts",
+        default=10,
+        type=int,
+        help="limits the top hosts shown (default is 10)",
+    )
+    parser.add_argument(
+        "--hosts-breakdown",
+        default=5,
+        type=int,
+        help="limits the top pages per host breakdown (default is 5)",
+    )
+    parser.add_argument(
+        "--show-errors",
+        default=False,
+        const=True,
+        action="store_const",
+        help="if present show malformed line numbers ",
+    )
+
+    args = parser.parse_args(sys.argv[1:])
+    # create config for this run
+    cfg = Config(
+        {
+            "logfile": args.logfile,
+            "top_req_pages": args.pages,
+            "perc_succ_reqs": True,
+            "perc_fail_reqs": True,
+            "top_hosts": args.hosts,
+            "top_pages_per_host": args.hosts_breakdown,
+            "show_errors": args.show_errors,
+        }
+    )
+    stats = Stats(config=cfg)
+    res = stats.stats()
+    print(json.dumps(res, indent=4))
 
 
 if __name__ == "__main__":
