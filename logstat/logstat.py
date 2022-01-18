@@ -32,6 +32,8 @@ class LogLine:
             self.time = m.group(2)
             self.version = None
             verb_page_version = m.group(3).split()
+            if len(verb_page_version) < 2 or len(verb_page_version) > 3:
+                raise ValueError("Malformed line")
             if len(verb_page_version) == 3:
                 self.verb, self.page, self.version = verb_page_version
             else:
@@ -104,7 +106,7 @@ class Stats:
                         self.hosts[lg.host]["fails"] += 1
                         self.pages[lg.page]["fails"] += 1
                 # any error contributes to errors index
-                except (UnicodeDecodeError, AttributeError):
+                except (UnicodeDecodeError, AttributeError, ValueError):
                     self.errors.append(lineno)
                     continue
 

@@ -1,5 +1,5 @@
 {
-    "logfile": "NASA_access_log_Aug95",
+    "logfile": "logfile",
     "top_req_pages": 2,
     "perc_succ_reqs": true,
     "perc_fail_reqs": true,
