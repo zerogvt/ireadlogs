@@ -17,39 +17,40 @@ class Config:
         self.error_in_lines = cfgdict["error_in_lines"]
 
 
-class LogData:
+class LogLine:
     """Captures an analysed log line"""
 
     # static - compiled once
-    MATCHER = re.compile(r'(.*)\s-\s-\s\[(.*)\]\s"(\w+)\s(.*)(\s.*)?"\s(\d+)\s(\d+)?')
+    MATCHER = re.compile(r'(.*)\s-\s-\s\[(.*)\]\s"(.*)"\s(.*)')
 
     # ctor
     def __init__(self, line):
-        # match line against reg exp
-        m = self.MATCHER.match(line)
-        # unpack parsed values - nbytes is optional
-        self.nbytes = 0
-        if len(m.groups()) == 7:
-            (
-                self.host,
-                self.time,
-                self.verb,
-                self.page,
-                self.vers,
-                self.status,
-                self.nbytes,
-            ) = m.groups()
-        elif len(m.groups()) == 6:
-            (
-                self.host,
-                self.time,
-                self.verb,
-                self.page,
-                self.vers,
-                self.status,
-            ) = m.groups()
-        else:
-            raise ValueError("Malformed log line")
+        try:
+            # match line against reg exp
+            m = self.MATCHER.match(line)
+            self.host = m.group(1)
+            self.time = m.group(2)
+            self.version = None
+            verb_page_version = m.group(3).split()
+            if len(verb_page_version) == 3:
+                self.verb, self.page, self.version = verb_page_version
+            else:
+                self.verb, self.page = verb_page_version
+            status_nbytes = m.group(4).split()
+            if len(status_nbytes) == 2:
+                self.status, self.nbytes = status_nbytes
+            else:
+                self.status = status_nbytes[0]
+                self.nbytes = "0"
+            self.status = int(self.status)
+            # treat garbage in nbytes
+            for c in self.nbytes:
+                if not c.isdigit():
+                    self.nbytes = 0
+                    return
+            self.nbytes = int(self.nbytes)
+        except Exception:
+            raise
 
 
 class Stats:
@@ -78,7 +79,7 @@ class Stats:
             for line in logf:
                 lineno += 1
                 try:
-                    lg = LogData(line=line)
+                    lg = LogLine(line=line)
                     # keep pages-based stats
                     if lg.page not in self.pages:
                         self.pages[lg.page] = {"count": 1, "fails": 0}
