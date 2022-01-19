@@ -27,14 +27,19 @@ Activate it
 Install ireadlogs from [pypi](https://pypi.org/project/ireadlogs/):
 `pip install ireadlogs -U`
 
-Run:
+# Usage
 `ireadlogs path_to_logfile`
 
-# Getting help / Command line options
+## Getting help
 ```
-usage: ireadlogs [-h] [--pages PAGES] [--hosts HOSTS]
-                 [--hosts-breakdown HOSTS_BREAKDOWN] [--show-errors]
-                 logfile
+ireadlogs -h
+```
+
+## Command line options
+```
+ireadlogs [-h] [--pages PAGES] [--hosts HOSTS]
+               [--hosts-breakdown HOSTS_BREAKDOWN] [--show-errors]
+               logfile
 
 positional arguments:
   logfile
