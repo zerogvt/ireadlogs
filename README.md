@@ -24,7 +24,7 @@ Create a python virtual environment
 Activate it
 `. venv/bin/activate`
 
-Install ireadlogs from pypa:
+Install ireadlogs from [pypi](https://pypi.org/project/ireadlogs/):
 `pip install ireadlogs -U`
 
 Run:
