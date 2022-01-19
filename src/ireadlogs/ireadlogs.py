@@ -1,8 +1,14 @@
 import sys
 import json
-from parser import Parser
-from runconfig import RunConfig
-from stats import Stats
+
+try:
+    from parser import Parser
+    from runconfig import RunConfig
+    from stats import Stats
+except (ModuleNotFoundError, ImportError):
+    from .parser import Parser
+    from .runconfig import RunConfig
+    from .stats import Stats
 
 
 def main():

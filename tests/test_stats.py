@@ -7,15 +7,15 @@ from src.ireadlogs.runconfig import RunConfig
 class TestLogStats(unittest.TestCase):
     def test_calc_indexes(self):
         cfg = RunConfig(
-        {
-            "logfile": "tests/resources/logfile.txt",
-            "top_req_pages": 5,
-            "perc_succ_reqs": True,
-            "perc_fail_reqs": True,
-            "top_hosts": 5,
-            "top_pages_per_host": 5,
-            "show_errors": True,
-        }
+            {
+                "logfile": "tests/resources/logfile.txt",
+                "top_req_pages": 5,
+                "perc_succ_reqs": True,
+                "perc_fail_reqs": True,
+                "top_hosts": 5,
+                "top_pages_per_host": 5,
+                "show_errors": True,
+            }
         )
         st = Stats(config=cfg)
         st._calc_indexes()
@@ -29,19 +29,19 @@ class TestLogStats(unittest.TestCase):
 
     def test_calc_stats(self):
         cfg = RunConfig(
-        {
-            "logfile": "tests/resources/logfile2.txt",
-            "top_req_pages": 5,
-            "perc_succ_reqs": True,
-            "perc_fail_reqs": True,
-            "top_hosts": 5,
-            "top_pages_per_host": 5,
-            "show_errors": True,
-        }
+            {
+                "logfile": "tests/resources/logfile2.txt",
+                "top_req_pages": 5,
+                "perc_succ_reqs": True,
+                "perc_fail_reqs": True,
+                "top_hosts": 5,
+                "top_pages_per_host": 5,
+                "show_errors": True,
+            }
         )
         st = Stats(config=cfg)
         st._calc_indexes()
         stats = st._calc_stats()
-        self.assertEqual(stats['top_req_pages'][0][0], "/home")
-        self.assertEqual(stats['top_hosts'][0]['host'], "uplherc.upl.com")
-        self.assertEqual(stats['top_hosts'][0]['count'], 5)
+        self.assertEqual(stats["top_req_pages"][0][0], "/home")
+        self.assertEqual(stats["top_hosts"][0]["host"], "uplherc.upl.com")
+        self.assertEqual(stats["top_hosts"][0]["count"], 5)
