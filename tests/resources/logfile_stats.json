@@ -1,0 +1,69 @@
+{
+    "top_req_pages": [
+        [
+            "/shuttle/missions/sts-68/news/sts-68-mcc-05.txt",
+            1
+        ],
+        [
+            "/",
+            1
+        ],
+        [
+            "/images/ksclogo-medium.gif",
+            1
+        ],
+        [
+            "/images/MOSAIC-logosmall.gif",
+            1
+        ],
+        [
+            "/history/skylab/skylab.html",
+            1
+        ]
+    ],
+    "perc_succ_reqs": "100.00",
+    "perc_fail_reqs": "0.00",
+    "top_hosts": [
+        {
+            "host": "uplherc.upl.com",
+            "count": 3,
+            "breakdown": [
+                [
+                    "/",
+                    1
+                ],
+                [
+                    "/images/ksclogo-medium.gif",
+                    1
+                ],
+                [
+                    "/images/MOSAIC-logosmall.gif",
+                    1
+                ]
+            ]
+        },
+        {
+            "host": "in24.inetnebr.com",
+            "count": 1,
+            "breakdown": [
+                [
+                    "/shuttle/missions/sts-68/news/sts-68-mcc-05.txt",
+                    1
+                ]
+            ]
+        },
+        {
+            "host": "slppp6.intermind.net",
+            "count": 1,
+            "breakdown": [
+                [
+                    "/history/skylab/skylab.html",
+                    1
+                ]
+            ]
+        }
+    ],
+    "error_in_lines": [
+        6
+    ]
+}

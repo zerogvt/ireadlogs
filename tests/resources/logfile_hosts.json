@@ -1,0 +1,25 @@
+{
+    "in24.inetnebr.com": {
+        "count": 1,
+        "fails": 0,
+        "pages": {
+            "/shuttle/missions/sts-68/news/sts-68-mcc-05.txt": 1
+        }
+    },
+    "uplherc.upl.com": {
+        "count": 3,
+        "fails": 0,
+        "pages": {
+            "/": 1,
+            "/images/ksclogo-medium.gif": 1,
+            "/images/MOSAIC-logosmall.gif": 1
+        }
+    },
+    "slppp6.intermind.net": {
+        "count": 1,
+        "fails": 0,
+        "pages": {
+            "/history/skylab/skylab.html": 1
+        }
+    }
+}

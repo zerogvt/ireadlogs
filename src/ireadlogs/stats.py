@@ -1,4 +1,7 @@
-from logline import LogLine
+try:
+    from logline import LogLine
+except ModuleNotFoundError:
+    from .logline import LogLine
 
 
 class Stats:

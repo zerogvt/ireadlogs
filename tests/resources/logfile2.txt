@@ -1,0 +1,5 @@
+uplherc.upl.com - - [01/Aug/1995:00:00:07 -0400] "GET /home HTTP/1.0" 304 0
+uplherc.upl.com - - [01/Aug/1995:00:00:07 -0400] "GET /home HTTP/1.0" 304 0
+uplherc.upl.com - - [01/Aug/1995:00:00:07 -0400] "GET /home HTTP/1.0" 304 0
+uplherc.upl.com - - [01/Aug/1995:00:00:07 -0400] "GET /home HTTP/1.0" 304 0
+uplherc.upl.com - - [01/Aug/1995:00:00:07 -0400] "GET /home HTTP/1.0" 304 0
