@@ -28,14 +28,13 @@ Install ireadlogs from [pypi](https://pypi.org/project/ireadlogs/):
 `pip install ireadlogs -U`
 
 Run:
-`python -m ireadlogs path_to_logfile`
+`ireadlogs path_to_logfile`
 
 # Getting help / Command line options
 ```
-python -m ireadlogs -h
-usage: __main__.py [-h] [--pages PAGES] [--hosts HOSTS]
-                   [--hosts-breakdown HOSTS_BREAKDOWN] [--show-errors]
-                   logfile
+usage: ireadlogs [-h] [--pages PAGES] [--hosts HOSTS]
+                 [--hosts-breakdown HOSTS_BREAKDOWN] [--show-errors]
+                 logfile
 
 positional arguments:
   logfile
@@ -49,8 +48,15 @@ optional arguments:
   --show-errors         if present show malformed line numbers
 ```
 
-# Build / Distribute
+# Build
+`make build`
+
+# Distribute
 `make distribute`
 
 # Run tests
 `make test`
+
+# Install locally for dev
+After creating and activating a python3.6+ virtualenv:
+` pip install -e .`
