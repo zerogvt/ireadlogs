@@ -1,5 +1,5 @@
 # ireadlogs
-This is a small python module that parses and analyzes logs such as [this](ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz) available at [NASA-FTP](ftp://ita.ee.lbl.gov/traces/), and produces a JSON report with next information:
+This is a small python module that parses and analyzes logs such as ftp://ita.ee.lbl.gov/traces/NASA_access_log_Aug95.gz available at NASA-FTP (ftp://ita.ee.lbl.gov/traces/), and produces a JSON report with next information:
 1. Top requested pages and the number of requests made for each
 2. Percentage of successful requests (anything in the 200s and 300s range)
 3. Percentage of unsuccessful requests (anything that is not in the 200s or 300s range)
